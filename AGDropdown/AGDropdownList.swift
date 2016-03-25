@@ -33,13 +33,24 @@ public class AGDropdownList: UITextField, UITableViewDataSource, UITableViewDele
         }
     }
     ///下拉框最大高度
-    public var maxHeight: CGFloat = 150.0 {
+    public var maxHeight: CGFloat? {
         didSet {
             guard let height = agTableView?.frame.height else {
                 return
             }
             if height > maxHeight {
-                agTableView?.frame.size.height = maxHeight
+                agTableView?.frame.size.height = maxHeight!
+            }
+        }
+    }
+    ///下拉框最小高度
+    public var minHeight: CGFloat? {
+        didSet {
+            guard let height = agTableView?.frame.height else {
+                return
+            }
+            if height < minHeight {
+                agTableView?.frame.size.height = minHeight!
             }
         }
     }
@@ -71,8 +82,18 @@ public class AGDropdownList: UITextField, UITableViewDataSource, UITableViewDele
         guard let parentView = self.superview else {
             return
         }
+        guard let datasource = datasource else {
+            return
+        }
         if agTableView == nil {
-            agTableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.height, self.frame.width, maxHeight))
+            var height: CGFloat = CGFloat(AGDataSource.getDataSourceCount(datasource)) * self.frame.height
+            if minHeight != nil {
+                height = minHeight!
+            }
+            if maxHeight != nil && maxHeight! < height {
+                height = maxHeight!
+            }
+            agTableView = UITableView(frame: CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.height, self.frame.width, height))
             agTableView?.dataSource = self
             agTableView?.delegate = self
             agTableView?.separatorStyle = .None

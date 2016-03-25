@@ -97,6 +97,11 @@ class AGDataSource {
         }
         return tempStrs
     }
+    ///获取数据源的总数
+    class func getDataSourceCount(datasource: [AGDropDownData]) -> Int {
+        let array = makeDataSource(datasource, groupBy: AGDropDownGroup.NONE)
+        return array.count
+    }
     
     class func defaultGroupDictionary(datasource: [AGDropDownData]) -> NSArray {
         return datasource.sort{ $0.value! < $1.value! }
