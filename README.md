@@ -1,7 +1,7 @@
 # AGDropdown
 iOS Dropdownlist
 
-the AGDropdownList is a single select view like the "<select></select>"" in html, and it's very easy to use it.
+the AGDropdownList is a single select view like the "select" dom in html, and it's very easy to use it.
 
 below is the example:
 
@@ -22,3 +22,9 @@ below is the example:
         dropdown.layer.borderWidth = 1.0
         self.view.addSubview(dropdown)
 
+
+![image](https://github.com/xjmeplws/AGDropdown/blob/master/ScreenShots/1.png)
+
+![image](https://github.com/xjmeplws/AGDropdown/blob/master/ScreenShots/2.png)
+
+![image](https://github.com/xjmeplws/AGDropdown/blob/master/ScreenShots/3.png)
