@@ -3,7 +3,6 @@ iOS Dropdownlist
 
 the AGDropdownList is a single select view like the "select" dom in html, and it's very easy to use it.
 
-you can use the pod like that: pod 'AGDropdown', '~> 1.0.0'
 
 below is the example:
 
